@@ -1,5 +1,6 @@
 ﻿using DecoupledControllersWithApiEndpoints.Features.Beers.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DecoupledControllersWithApiEndpoints.Data
 {
@@ -10,6 +11,13 @@ namespace DecoupledControllersWithApiEndpoints.Data
         public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Beer>()
+                .Property(b => b.Style)
+                .HasConversion(new EnumToStringConverter<BeerStyle>());
         }
     }
 }

@@ -4,7 +4,7 @@
     {
         public string? Name { get; set; }
 
-        public BeerStyle Style { get; set; }
+        public string? Style { get; set; }
 
         public decimal Abv { get; set; }
 

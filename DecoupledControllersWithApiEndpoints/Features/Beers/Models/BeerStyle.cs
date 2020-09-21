@@ -4,6 +4,7 @@
     {
         Lager,
         Ipa,
-        Hazy
+        Hazy,
+        Other
     }
 }
