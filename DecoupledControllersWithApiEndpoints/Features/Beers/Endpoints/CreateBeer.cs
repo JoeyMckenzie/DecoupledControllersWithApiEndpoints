@@ -44,7 +44,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
             var beer = await _context.AddAsync(beerToAdd, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Created(new Uri($"/api/beers/{beer.Entity.Id}", UriKind.Relative), beer.Entity);
+            return Created(new Uri($"/{Routes.BaseUri}/{beer.Entity.Id}", UriKind.Relative), beer.Entity);
         }
     }
 }
