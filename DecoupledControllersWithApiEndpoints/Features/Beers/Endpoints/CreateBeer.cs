@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
 using DecoupledControllersWithApiEndpoints.Data;
 using DecoupledControllersWithApiEndpoints.Features.Beers.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
 {
-    [Route(Routes.BaseUri)]
+    [Route(Routes.BeerUri)]
     public class CreateBeer : BaseAsyncEndpoint<CreateBeerDto, Beer>
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +21,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
             (_context, _logger) = (dbContext, logger);
 
         [HttpPost]
-        [ProducesResponseType(typeof(Beer), 201)]
+        [ProducesResponseType(typeof(Beer), StatusCodes.Status201Created)]
         [SwaggerOperation(
             Summary = "Creates a beers",
             Description = "Creates a beer in the database using Entity Framework Core",
@@ -44,7 +45,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
             var beer = await _context.AddAsync(beerToAdd, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Created(new Uri($"/{Routes.BaseUri}/{beer.Entity.Id}", UriKind.Relative), beer.Entity);
+            return Created(new Uri($"/{Routes.BeerUri}/{beer.Entity.Id}", UriKind.Relative), beer.Entity);
         }
     }
 }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ardalis.ApiEndpoints;
+using DecoupledControllersWithApiEndpoints.Features.Beers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DecoupledControllersWithApiEndpoints.Features.Weather.Endpoints
 {
-    [Route("api/weather")]
+    [Route(Routes.WeatherUri)]
     public class GetWeatherForecast : BaseEndpoint<IEnumerable<WeatherForecast>>
     {
         private static readonly string[] Summaries = new[]
