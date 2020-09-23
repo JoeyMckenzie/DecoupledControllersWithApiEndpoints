@@ -28,7 +28,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
             OperationId = nameof(CreateBeer),
             Tags = new[] { nameof(CreateBeer) }
         )]
-        public override async Task<ActionResult<Beer>> HandleAsync(CreateBeerDto request, CancellationToken cancellationToken = default)
+        public override async Task<ActionResult<Beer>> HandleAsync([FromBody] CreateBeerDto request, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation("Received request to create beer...");
 

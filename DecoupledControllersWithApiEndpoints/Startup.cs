@@ -57,7 +57,6 @@ namespace DecoupledControllersWithApiEndpoints
 
             app.UseAuthorization();
 
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -3,9 +3,6 @@ using DecoupledControllersWithApiEndpoints.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +17,8 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
         public DeleteBeer(ApplicationDbContext context, ILogger<DeleteBeer> logger) =>
             (_context, _logger) = (context, logger);
 
-        public override async Task<ActionResult<NoContentResult>> HandleAsync(int id, CancellationToken cancellationToken = default)
+        [HttpDelete("{id}")]
+        public override async Task<ActionResult<NoContentResult>> HandleAsync([FromRoute] int id, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation($"Received request to delete beer with ID {id}...");
 

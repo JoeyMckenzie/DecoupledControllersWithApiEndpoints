@@ -25,7 +25,7 @@ namespace DecoupledControllersWithApiEndpoints
                 },
                 new Beer
                 {
-                    Name = "Hazy Little",
+                    Name = "Hazy Little Thing",
                     Abv = 6.8m,
                     Ibu = 90,
                     Style = BeerStyle.Hazy,
