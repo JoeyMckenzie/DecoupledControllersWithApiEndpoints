@@ -32,6 +32,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
         {
             _logger.LogInformation("Received request to create beer...");
 
+            // Grab a reference to a new Beer entity instance
             var beerToAdd = new Beer
             {
                 Name = request.Name,
@@ -42,6 +43,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
                 UpdatedAt = DateTime.UtcNow
             };
 
+            // Add the beer as a tracked entity and grab a reference to the managed entity returned to us
             var beer = await _context.AddAsync(beerToAdd, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 

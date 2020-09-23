@@ -20,6 +20,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
         public DeleteBeer(ApplicationDbContext context, ILogger<DeleteBeer> logger) =>
             (_context, _logger) = (context, logger);
 
+        [HttpDelete]
         public override async Task<ActionResult<NoContentResult>> HandleAsync(int id, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation($"Received request to delete beer with ID {id}...");

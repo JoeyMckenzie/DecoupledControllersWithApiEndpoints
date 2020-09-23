@@ -33,6 +33,7 @@ namespace DecoupledControllersWithApiEndpoints.Features.Beers.Endpoints
         {
             _logger.LogInformation($"Received request to retrieve beer with ID {id}");
 
+            // Grab a reference to the matching beer and invalidate the request if none is found
             var beer = await _context.Beers.FirstOrDefaultAsync(b => b.Id == id, cancellationToken);
             if (beer is null)
             {
